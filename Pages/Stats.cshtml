@@ -1,0 +1,79 @@
+@page
+@model StatsModel
+@{
+    ViewData["Title"] = "Результаты";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow border-0 rounded-4 overflow-hidden">
+                <div class="card-header p-4 text-center">
+                    <h2 class="m-0 fw-bold">Рейтинг Backend-стеков</h2>
+                    <p class="mb-0 opacity-75 mt-2">Актуальная статистика голосования</p>
+                </div>
+
+                <div class="card-body p-4 bg-light">
+                    <div class="d-flex justify-content-between align-items-center mb-4 px-2">
+                        <span class="text-muted fw-bold">Всего голосов:</span>
+                        <span class="badge bg-primary fs-5">@Model.TotalResponses</span>
+                    </div>
+
+                    @if (Model.Stats.Any())
+                    {
+                        <div class="list-group list-group-flush">
+                            @foreach (var stat in Model.Stats)
+                            {
+                                var percent = Model.TotalResponses > 0
+                                    ? Math.Round((double)stat.Count * 100 / Model.TotalResponses, 1)
+                                    : 0;
+
+                                var percentCss = percent.ToString("F1", System.Globalization.CultureInfo.InvariantCulture);
+
+                                var barColor = stat.OptionName.Contains("Python") ? "bg-warning" :
+                                               stat.OptionName.Contains("Java") ? "bg-danger" :
+                                               stat.OptionName.Contains("C#") || stat.OptionName.Contains(".NET") ? "bg-info" :
+                                               stat.OptionName.Contains("TypeScript") || stat.OptionName.Contains("JavaScript") ? "bg-success" :
+                                               "bg-secondary";
+
+                                <div class="list-group-item bg-transparent border-0 py-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="fw-bold">@stat.OptionName</span>
+                                        <span class="text-muted small">@stat.Count (@percent%)</span>
+                                    </div>
+
+                                    @* В Bootstrap 5 для .progress достаточно просто задать высоту *@
+                                    <div class="progress" style="height: 12px;">
+                                        @* Цвета и стили применяются строго к .progress-bar *@
+                                        <div class="progress-bar @barColor"
+                                             role="progressbar"
+                                             style="width: @(percentCss)%;"
+                                             aria-valuenow="@percentCss"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <div class="display-1 text-muted opacity-25 mb-3">🗳️</div>
+                            <h4 class="text-muted">Голосов пока нет</h4>
+                            <p class="text-muted">Будь первым, кто выберет свой стек!</p>
+                        </div>
+                    }
+                </div>
+
+                <div class="card-footer bg-white border-0 p-4 text-center">
+                    <a href="/" class="btn btn-dark px-4 py-2 rounded-pill">
+                        ← Проголосовать снова
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

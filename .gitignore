@@ -1,0 +1,54 @@
+## База данных (генерируется сама)
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+
+## Target directories (Скомпилированный код и бинарники)
+[Db]in/
+[Oo]bj/
+[Oo]ut/
+
+## Visual Studio cache and settings (Кэш и настройки Visual Studio)
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+## JetBrains Rider / Resharper (Настройки Rider)
+.idea/
+*.sln.DotSettings.user
+
+## Visual Studio Code (Настройки VS Code)
+.vscode/
+!.vscode/extensions.json
+
+## User-specific files and secrets (Локальные секреты разработки)
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+appsettings.Development.json
+secrets.json
+
+## .NET Core / .NET tools
+.config/dotnet-tools.json
+
+## Testing and coverage (Результаты тестов и покрытия кода)
+TestResults/
+*.clog
+*.log
+
+## Publish output (Артефакты публикации)
+PublishOutput/
+*.[Pp]ublish.xml
+
+## Frontend tools (Если в ASP.NET проекте есть Angular/React/Vue или npm)
+node_modules/
+.pnpm-store/
+.yarn/
+dist/
+wwwroot/dist/
+wwwroot/lib/
