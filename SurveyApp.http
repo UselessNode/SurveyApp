@@ -1,0 +1,128 @@
+@host = http://localhost:8080
+
+### 1. Создание пользователя user1
+POST {{host}}/api/accounts
+Content-Type: application/json
+
+{
+  "login": "user1",
+  "password": "pass123",
+  "personalInfo": {
+    "fullName": "Иван Петров",
+    "email": "ivan@mail.ru"
+  },
+  "role": {
+    "name": "USER"
+  }
+}
+
+### 2. Создание пользователя user2
+POST {{host}}/api/accounts
+Content-Type: application/json
+
+{
+  "login": "user2",
+  "password": "pass123",
+  "personalInfo": {
+    "fullName": "Мария Смирнова",
+    "email": "maria@mail.ru"
+  },
+  "role": {
+    "name": "USER"
+  }
+}
+
+### 3. Создание пользователя user3
+POST {{host}}/api/accounts
+Content-Type: application/json
+
+{
+  "login": "user3",
+  "password": "pass123",
+  "personalInfo": {
+    "fullName": "Алексей Кузнецов",
+    "email": "alexey@mail.ru"
+  },
+  "role": {
+    "name": "USER"
+  }
+}
+
+### 4. Создание пользователя user4
+POST {{host}}/api/accounts
+Content-Type: application/json
+
+{
+  "login": "user4",
+  "password": "pass123",
+  "personalInfo": {
+    "fullName": "Ольга Иванова",
+    "email": "olga@mail.ru"
+  },
+  "role": {
+    "name": "USER"
+  }
+}
+
+### 5. Создание пользователя user5 (роль ADMIN — чтобы проверить поиск по роли)
+POST {{host}}/api/accounts
+Content-Type: application/json
+
+{
+  "login": "user5",
+  "password": "pass123",
+  "personalInfo": {
+    "fullName": "Дмитрий Соколов",
+    "email": "dmitry@mail.ru"
+  },
+  "role": {
+    "name": "ADMIN"
+  }
+}
+
+### 6. Получить всех пользователей
+GET {{host}}/api/accounts
+
+### 7. Получить одного пользователя по ID
+GET {{host}}/api/accounts/1
+
+### 8. Кастомный запрос: поиск по роли
+GET {{host}}/api/accounts?role=ADMIN
+
+### 9. Кастомный запрос: поиск по ФИО (частичное совпадение, без учёта регистра)
+GET {{host}}/api/accounts?fullName=иван
+
+### 10. Проверка валидации: ожидаем 400 Bad Request
+POST {{host}}/api/accounts
+Content-Type: application/json
+
+{
+  "login": "u",
+  "password": "123",
+  "personalInfo": {
+    "fullName": "",
+    "email": "не-почта"
+  },
+  "role": {
+    "name": "USER"
+  }
+}
+
+### 11. Проверка конфликта: повторный логин, ожидаем 409 Conflict
+POST {{host}}/api/accounts
+Content-Type: application/json
+
+{
+  "login": "user1",
+  "password": "pass123",
+  "personalInfo": {
+    "fullName": "Другой человек",
+    "email": "other@mail.ru"
+  },
+  "role": {
+    "name": "USER"
+  }
+}
+
+### 12. Проверка 404: несуществующий ID
+GET {{host}}/api/accounts/9999
