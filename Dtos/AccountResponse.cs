@@ -2,10 +2,6 @@
 using SurveyApp.Models;
 
 namespace SurveyApp.Dtos;
-
-// То, что уходит клиенту в ответ на GET/POST.
-// Отдаём не сущность, а отдельный объект: так мы не показываем пароль
-// и не уходим в бесконечную рекурсию "аккаунт -> роль -> список аккаунтов"
 public class AccountResponse
 {
     public int Id { get; set; }
@@ -14,7 +10,6 @@ public class AccountResponse
     public PersonalInfoResponse? PersonalInfo { get; set; }
     public RoleResponse? Role { get; set; }
 
-    // Собираем ответ из сущности
     public static AccountResponse FromAccount(Account account)
     {
         return new AccountResponse

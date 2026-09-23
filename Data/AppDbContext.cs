@@ -5,7 +5,6 @@ using SurveyApp.Models;
 namespace SurveyApp.Data;
 
 // Точка входа в базу данных для EF Core
-// (аналог связки JPA/Hibernate в Spring Boot)
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -17,7 +16,7 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // В PostgreSQL принято называть таблицы в snake_case, поэтому задаём имена вручную
+        // В PostgreSQL принято называть таблицы в snake_case -> задаём имена вручную
         modelBuilder.Entity<Account>().ToTable("accounts");
         modelBuilder.Entity<PersonalInfo>().ToTable("personal_info");
         modelBuilder.Entity<Role>().ToTable("roles");

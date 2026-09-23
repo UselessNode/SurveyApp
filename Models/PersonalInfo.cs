@@ -6,13 +6,12 @@ public class PersonalInfo
 {
     public int Id { get; set; }
 
-    // ФИО пользователя
+    // ФИО пользователя. Все кто делают отдельные поля под Фамилию, Имя, Отчество -- кретины
     public string FullName { get; set; } = "";
 
     public string Email { get; set; } = "";
 
-    // Внешний ключ: чей это блок персональных данных.
-    // Именно эта сторона связи "один к одному" хранит ссылку на accounts
+    // Внешний ключ. Связь "один к одному" хранит ссылку на accounts
     public int AccountId { get; set; }
     public Account? Account { get; set; }
 }

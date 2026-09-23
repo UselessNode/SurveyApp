@@ -3,7 +3,7 @@ using SurveyApp.Models;
 
 namespace SurveyApp.Repositories;
 
-// Контракт репозитория ролей (аналог JpaRepository<Role, Integer>)
+// Контракт репозитория ролей
 public interface IRoleRepository
 {
     // Все роли справочника

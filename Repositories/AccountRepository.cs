@@ -5,7 +5,6 @@ using SurveyApp.Models;
 
 namespace SurveyApp.Repositories;
 
-// Реализация репозитория аккаунтов на EF Core.
 // В Spring Data JPA этот класс писать не нужно — интерфейса достаточно.
 // В .NET мы сами пишем запросы, поэтому репозиторий делается вручную
 public class AccountRepository : IAccountRepository
@@ -19,8 +18,6 @@ public class AccountRepository : IAccountRepository
 
     public async Task<List<Account>> GetAllAsync()
     {
-        // Include подгружает связанные таблицы (персональные данные и роль),
-        // иначе в JSON попали бы только id роли и аккаунта
         return await _db.Accounts
             .Include(a => a.PersonalInfo)
             .Include(a => a.Role)
@@ -46,8 +43,6 @@ public class AccountRepository : IAccountRepository
 
     public async Task<List<Account>> GetByFullNameAsync(string fullName)
     {
-        // EF.Functions.ILike — регистронезависимый поиск, есть только в PostgreSQL.
-        // % вокруг строки означает "содержит подстроку"
         var pattern = $"%{fullName}%";
 
         return await _db.Accounts

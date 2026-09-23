@@ -6,7 +6,6 @@ namespace SurveyApp.Exceptions;
 
 // Единый обработчик ошибок: сервисы просто кидают исключения,
 // а этот класс решает, какой HTTP-код вернуть клиенту.
-// В Spring Boot похожую роль играет @ControllerAdvice
 public class ApiExceptionHandler : IExceptionHandler
 {
     public async ValueTask<bool> TryHandleAsync(
@@ -30,7 +29,6 @@ public class ApiExceptionHandler : IExceptionHandler
 
         httpContext.Response.StatusCode = statusCode;
 
-        // ProblemDetails — стандартный формат описания ошибки в ASP.NET Core
         await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
         {
             Status = statusCode,

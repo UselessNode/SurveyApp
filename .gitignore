@@ -33,6 +33,9 @@
 appsettings.Development.json
 secrets.json
 
+## Личные заметки (не для сдачи)
+NOTES.md
+
 ## .NET Core / .NET tools
 .config/dotnet-tools.json
 
@@ -52,3 +55,4 @@ node_modules/
 dist/
 wwwroot/dist/
 wwwroot/lib/
+docs/

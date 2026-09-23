@@ -4,7 +4,6 @@ using SurveyApp.Models;
 namespace SurveyApp.Repositories;
 
 // Контракт репозитория аккаунтов.
-// Полный аналог интерфейса, наследующего JpaRepository<Account, Integer> в Spring Data JPA
 public interface IAccountRepository
 {
     // Получить все записи

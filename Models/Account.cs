@@ -6,10 +6,9 @@ public class Account
 {
     public int Id { get; set; }
 
-    // Логин, по которому пользователь входит в систему
     public string Login { get; set; } = "";
 
-    // Пароль. В учебном проекте хранится как есть, в реальном — только хеш
+    // TODO: Избавиться от уязвимости -> Храним хэш вместо строки пароля.
     public string Password { get; set; } = "";
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
