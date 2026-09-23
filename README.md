@@ -1,4 +1,4 @@
-# SurveyApp — Лабораторная работа №1
+# Лабораторная работа №1: Базовая архитектура Web-приложения
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-purple)](https://dotnet.microsoft.com/)
 [![SQLite](https://img.shields.io/badge/DB-SQLite-green)](https://www.sqlite.org/index.html)
