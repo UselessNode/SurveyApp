@@ -1,4 +1,4 @@
-# SurveyApp — REST API учётных записей
+# Лабораторная работа №2: REST API
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-purple)](https://dotnet.microsoft.com/)
 [![PostgreSQL](https://img.shields.io/badge/DB-PostgreSQL%2016-blue)](https://www.postgresql.org/)
@@ -135,4 +135,4 @@ erDiagram
 
 ## Проверка API
 
-В файле `SurveyApp.http` написаны примеры запросов. Можно запустить прямо из VS Code или Visual Studio.
+В файле [SurveyApp.http](SurveyApp.http) написаны примеры запросов. Можно запустить прямо из Visual Studio.
